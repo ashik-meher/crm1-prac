@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <div class="card">
+
+       <div class="card-title">
+
+           <h2 style="text-align: center; padding:5px; color:sienna">Customer Information</h2>
+
+           <hr>
+
+        
+        </div>
+
+        <div class="card-body">
+
+             <p id="cus-info"> Name:&nbsp; {{customer.name}}</p>
+
+             <p id="cus-info"> Email: &nbsp; {{customer.email}}</p>
+
+             <p id="cus-info">Phone: &nbsp; {{customer.phone}}</p>
+        
+       </div> 
+
+ </div>
+     
+  
+     
+
+    <div class="form-group">
+
+        
+
+        <form id="contact" action="" method="post">
+
+            <h2 style="text-align: center; padding:5px; color:sienna">Orders</h2>
+
+            <hr>
+
+
+            {% csrf_token %}
+
+            {{formset.management_form}}
+
+            {% for form in formset %}
+
+            {{form.as_p}}
+
+            <hr>
+
+            {% endfor %}
+
+
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+
+
+
+
+
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
